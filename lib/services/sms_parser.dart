@@ -109,15 +109,15 @@ class SmsParser {
     // "at MERCHANT on …" / "at MERCHANT." / "at MERCHANT,"
     final patterns = [
       RegExp(
-        r'(?:^|\s)at\s+([A-Za-z0-9][\w\s&\'\-\.]{1,39}?)(?:\s+on\s|\s+for\s|[,\.]\s|\s*$)',
+        r"(?:^|\s)at\s+([A-Za-z0-9][\w\s&'\-.]{1,39}?)(?:\s+on\s|\s+for\s|[,.]\s|\s*$)",
         caseSensitive: false,
       ),
       RegExp(
-        r'(?:purchase|charged?|transaction)\s+(?:at|from|to)\s+([A-Za-z0-9][\w\s&\'\-\.]{1,39}?)(?:\s+on\s|\s+for\s|[,\.]\s|\s*$)',
+        r"(?:purchase|charged?|transaction)\s+(?:at|from|to)\s+([A-Za-z0-9][\w\s&'\-.]{1,39}?)(?:\s+on\s|\s+for\s|[,.]\s|\s*$)",
         caseSensitive: false,
       ),
       RegExp(
-        r'from\s+([A-Za-z0-9][\w\s&\'\-\.]{1,39}?)(?:\s+on\s|\s+for\s|[,\.]\s|\s*$)',
+        r"from\s+([A-Za-z0-9][\w\s&'\-.]{1,39}?)(?:\s+on\s|\s+for\s|[,.]\s|\s*$)",
         caseSensitive: false,
       ),
     ];
