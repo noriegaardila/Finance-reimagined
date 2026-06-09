@@ -1,0 +1,7 @@
+{
+  "name": "Finance-reimagined",
+  "repo": "noriegaardila/Finance-reimagined",
+  "branch": "claude/workspace-unification-logs-75eo17",
+  "tools": ["claude-code", "codex", "openclaw", "kimi-code"],
+  "credential_helper": "git-store"
+}
