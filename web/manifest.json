@@ -1,13 +1,16 @@
 {
-    "name": "finance_reimagined",
-    "short_name": "finance_reimagined",
-    "start_url": ".",
+    "name": "Finance Reimagined",
+    "short_name": "Finance",
+    "description": "Controla tus finanzas personales desde SMS bancarios.",
+    "start_url": "/Finance-reimagined/",
+    "scope": "/Finance-reimagined/",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "background_color": "#4F46E5",
+    "theme_color": "#4F46E5",
     "orientation": "portrait-primary",
+    "lang": "es",
     "prefer_related_applications": false,
+    "categories": ["finance", "productivity"],
     "icons": [
         {
             "src": "icons/Icon-192.png",
@@ -30,6 +33,16 @@
             "sizes": "512x512",
             "type": "image/png",
             "purpose": "maskable"
+        }
+    ],
+    "screenshots": [],
+    "shortcuts": [
+        {
+            "name": "Agregar SMS",
+            "short_name": "Agregar",
+            "description": "Pegar un SMS bancario",
+            "url": "/Finance-reimagined/#/add",
+            "icons": [{ "src": "icons/Icon-192.png", "sizes": "192x192" }]
         }
     ]
 }

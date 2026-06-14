@@ -1,38 +1,111 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
   <base href="$FLUTTER_BASE_HREF">
 
   <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- iOS meta tags & icons -->
+  <!-- SEO primario -->
+  <title>Finance Reimagined — Controla tus finanzas personales</title>
+  <meta name="description" content="Registra tus transacciones bancarias pegando un SMS. Finance Reimagined extrae monto, comercio y fecha automáticamente y organiza tus gastos por categoría.">
+  <meta name="keywords" content="finanzas personales, control de gastos, SMS bancario, presupuesto, transacciones">
+  <meta name="author" content="Santiago Noriega Ardila">
+
+  <!-- Esta es una app privada — no indexar -->
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Color del navegador (Android Chrome y Safari iOS) -->
+  <meta name="theme-color" content="#4F46E5">
+
+  <!-- Open Graph (preview al compartir en WhatsApp, Twitter, etc.) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Finance Reimagined">
+  <meta property="og:description" content="Controla tus finanzas pegando un SMS de tu banco. Extracción automática de montos, comercios y fechas.">
+  <meta property="og:image" content="icons/Icon-512.png">
+  <meta property="og:locale" content="es_CO">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Finance Reimagined">
+  <meta name="twitter:description" content="Controla tus finanzas pegando un SMS de tu banco.">
+  <meta name="twitter:image" content="icons/Icon-512.png">
+
+  <!-- iOS PWA -->
   <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="finance_reimagined">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Finance">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
-
-  <title>finance_reimagined</title>
+  <link rel="icon" type="image/png" href="favicon.png">
   <link rel="manifest" href="manifest.json">
+
+  <!-- JSON-LD: datos estructurados para buscadores -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Finance Reimagined",
+    "description": "App personal de finanzas con extracción automática de transacciones desde SMS bancarios.",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "iOS, Android, Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <style>
+    /* Splash screen mientras carga Flutter */
+    body {
+      margin: 0;
+      background-color: #4F46E5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    #loading {
+      text-align: center;
+      color: rgba(255,255,255,0.8);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    #loading svg {
+      animation: spin 1s linear infinite;
+      margin-bottom: 12px;
+    }
+    #loading p {
+      font-size: 14px;
+      margin: 0;
+      letter-spacing: 0.5px;
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+  </style>
 </head>
 <body>
+  <!-- Contenido visible mientras carga (también ayuda a crawlers básicos) -->
+  <div id="loading">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+      <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+    </svg>
+    <p>Cargando Finance Reimagined…</p>
+  </div>
+
   <script src="flutter_bootstrap.js" async></script>
+  <script>
+    // Ocultar el splash cuando Flutter tome el control
+    window.addEventListener('flutter-first-frame', function() {
+      var loader = document.getElementById('loading');
+      if (loader) loader.style.display = 'none';
+    });
+  </script>
 </body>
 </html>
