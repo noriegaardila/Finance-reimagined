@@ -1,23 +1,17 @@
 import 'dart:convert';
-import 'dart:io';
 
-import 'package:path_provider/path_provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/transaction.dart';
 
 class StorageService {
-  static const _fileName = 'transactions.json';
-
-  Future<File> get _file async {
-    final dir = await getApplicationDocumentsDirectory();
-    return File('${dir.path}/$_fileName');
-  }
+  static const _key = 'transactions';
 
   Future<List<Transaction>> load() async {
     try {
-      final file = await _file;
-      if (!await file.exists()) return [];
-      final raw = await file.readAsString();
+      final prefs = await SharedPreferences.getInstance();
+      final raw = prefs.getString(_key);
+      if (raw == null) return [];
       final list = json.decode(raw) as List<dynamic>;
       return list
           .map((e) => Transaction.fromJson(e as Map<String, dynamic>))
@@ -28,8 +22,9 @@ class StorageService {
   }
 
   Future<void> save(List<Transaction> transactions) async {
-    final file = await _file;
-    await file.writeAsString(
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(
+      _key,
       json.encode(transactions.map((t) => t.toJson()).toList()),
     );
   }
